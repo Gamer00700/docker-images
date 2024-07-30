@@ -1,0 +1,17 @@
+# Config
+
+services:
+  # PostGreSql
+  postgres:
+    image: bitnami/postgresql:latest
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=dev
+      - POSTGRES_PASSWORD=project
+      - POSTGRES_DB=pgsql
+    volumes:
+      - pgsql_data:/bitnami/PostgreSQL
+
+volumes:
+  pgsql_data:
