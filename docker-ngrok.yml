@@ -12,4 +12,4 @@ sevices:
       - 4040:4040
 
 volumes:
-  ./ngrok.yml
+  ./ngrok.yml:
