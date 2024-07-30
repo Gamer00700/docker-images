@@ -15,6 +15,7 @@ services:
       - POSTGRES_DB=pgsql
     volumes:
       - ./pgsql_data:/bitnami/postgresql
+  #Ngrok
   ngrok:
     image: ngrok/ngrok:latest
     container_name: ngrok

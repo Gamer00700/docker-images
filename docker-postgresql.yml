@@ -6,6 +6,7 @@ services:
   postgres:
     image: bitnami/postgresql:latest
     container_name: database_pgsql
+    restart: always
     ports:
       - '5432:5432'
     environment:
@@ -13,7 +14,7 @@ services:
       - POSTGRES_PASSWORD=project
       - POSTGRES_DB=pgsql
     volumes:
-      - pgsql_data:/bitnami/postgresql
+      - ./pgsql_data:/bitnami/postgresql
 
 volumes:
   pgsql_data:

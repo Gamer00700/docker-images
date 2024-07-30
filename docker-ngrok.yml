@@ -1,7 +1,10 @@
 sevices:
   ngrok:
-    image: ngrok/ngrok:latest
-    restart: unless-stopped
+    image: shkoliar/ngrok:latest
+    container_name: ngrok
+    restart: always
+    links:
+      - web
     command:
       - "start"
       - "--all"
@@ -11,5 +14,3 @@ sevices:
     ports:
       - 4040:4040
 
-volumes:
-  ./ngrok.yml:
