@@ -1,14 +1,14 @@
 services:
-    ngrok:
-      image: ngrok/ngrok:latest
-      container_name: ngrok
-      restart: always
-      command:
-        - "start"
-        - "--all"
-        - "/etc/ngrok.yml"
-      volumes:
-        - ./ngrok.yml:/etc/ngrok.yml
-      ports:
-        - 4040:4040
-
+    #Ngrok
+  ngrok:
+    image: ngrok/ngrok:latest
+    container_name: ngrok
+    restart: unless-stopped
+    command:
+      - "start"
+      - "--all"
+      - "/etc/ngrok.yml"
+    volumes:
+      - ./ngrok.yml:/etc/ngrok.yml
+    ports:
+      - 4040:4040

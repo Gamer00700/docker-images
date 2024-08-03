@@ -2,6 +2,8 @@
 version: '2.29'
 
 services:
+  #
+
   # PostGreSql
   postgres:
     image: bitnami/postgresql:latest
@@ -16,19 +18,20 @@ services:
     network_mode: "bridge"
     volumes:
       - ./pgsql_data:/bitnami/postgresql
+    
   #Ngrok
-  ngrok:
-    image: ngrok/ngrok:latest
-    container_name: ngrok
-    restart: unless-stopped
-    command:
-      - "start"
-      - "--all"
-      - "/etc/ngrok.yml"
-    volumes:
-      - ./ngrok.yml:/etc/ngrok.yml
-    ports:
-      - 4040:4040
+  # ngrok:
+  #   image: ngrok/ngrok:latest
+  #   container_name: ngrok
+  #   restart: unless-stopped
+  #   command:
+  #     - "start"
+  #     - "--all"
+  #     - "/etc/ngrok.yml"
+  #   volumes:
+  #     - ./ngrok.yml:/etc/ngrok.yml
+  #   ports:
+  #     - 4040:4040
 
 volumes:
   pgsql_data:
