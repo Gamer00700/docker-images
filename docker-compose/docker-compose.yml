@@ -11,6 +11,8 @@ services:
       - POSTGRES_PASSWORD=project
       - POSTGRES_DB=pgsql
       - POSTGRES_USER=dev
+      - PHP_MEMORY_LIMIT=10G
+      - PHP_UPLOAD_LIMIT=10G
     ports:
       - 80:80
     restart: always
