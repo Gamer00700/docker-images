@@ -3,5 +3,3 @@ docker-compose/pgsql_data
 
 #docker-compose
 docker-compose.yml.save
-
-teste.txt
