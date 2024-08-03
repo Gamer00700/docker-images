@@ -1,5 +1,8 @@
 #PostGre
 docker-compose/pgsql_data
 
+#NextCloud
+docker-compose/nc_data
+
 #docker-compose
 docker-compose.yml.save
