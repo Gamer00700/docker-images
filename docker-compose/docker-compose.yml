@@ -17,7 +17,7 @@ services:
       - POSTGRES_DB=pgsql
     network_mode: "bridge"
     volumes:
-      - ./pgsql_data:/bitnami/postgresql
+      - ./pgsql_data:/bitnami/postgresql:rw
     
   #Ngrok
   # ngrok:
