@@ -7,7 +7,7 @@ services:
     image: nextcloud:apache
     container_name: nextcloud
     environment:
-      - POSTGRES_HOST=172.17.0.2:5432
+      - POSTGRES_HOST=
       - POSTGRES_PASSWORD=project
       - POSTGRES_DB=pgsql
       - POSTGRES_USER=dev
@@ -16,6 +16,8 @@ services:
     restart: always
     volumes:
       - ./nc_data:/var/www/html
+    networks:
+      - proxy
 
   # PostGreSql
   postgres:
@@ -28,7 +30,8 @@ services:
       - POSTGRES_USER=dev
       - POSTGRES_PASSWORD=project
       - POSTGRES_DB=pgsql
-    network_mode: "bridge"
+    networks:
+      - proxy
     volumes:
       - ./pgsql_data:/bitnami/postgresql
       - ./pgsql_data:/opt/bitnami/postgresql/conf
@@ -50,3 +53,8 @@ services:
 volumes:
   pgsql_data:
   nc_data:
+
+networks:
+  proxy:
+    external:
+      name: proxy
