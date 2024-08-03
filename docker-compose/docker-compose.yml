@@ -2,7 +2,7 @@
 version: '2.29'
 
 services:
-  #
+  #NextCloud
   nextcloud:
     image: nextcloud:apache
     container_name: nextcloud
@@ -15,7 +15,7 @@ services:
       - 80:80
     restart: always
     volumes:
-      - nc_data:/var/www/html
+      - ./nc_data:/var/www/html
 
   # PostGreSql
   postgres:
@@ -49,3 +49,4 @@ services:
 
 volumes:
   pgsql_data:
+  nc_data:
