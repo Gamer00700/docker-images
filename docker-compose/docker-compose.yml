@@ -1,0 +1,37 @@
+# Config
+version: '2.29'
+
+services:
+  #
+
+  # PostGreSql
+  postgres:
+    image: bitnami/postgresql:latest
+    container_name: database_pgsql
+    restart: unless-stopped
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=dev
+      - POSTGRES_PASSWORD=project
+      - POSTGRES_DB=pgsql
+    network_mode: "bridge"
+    volumes:
+      - ./pgsql_data:/bitnami/postgresql:rw
+    
+  #Ngrok
+  # ngrok:
+  #   image: ngrok/ngrok:latest
+  #   container_name: ngrok
+  #   restart: unless-stopped
+  #   command:
+  #     - "start"
+  #     - "--all"
+  #     - "/etc/ngrok.yml"
+  #   volumes:
+  #     - ./ngrok.yml:/etc/ngrok.yml
+  #   ports:
+  #     - 4040:4040
+
+volumes:
+  pgsql_data:
