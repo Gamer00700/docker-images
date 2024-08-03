@@ -5,12 +5,9 @@ tunnels:
     proto: http
     addr: 80
     domain: srti-server.online
-#  server_ssh:
-#    proto: tcp
-#    addr: 22
+  server_ssh:
+    proto: tcp
+    addr: 22
   server_apache:
     proto: http
     addr: 8000
-  server_palworld:
-    proto: tcp
-    addr: 8211
