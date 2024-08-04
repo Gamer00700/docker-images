@@ -1,0 +1,13 @@
+version: "2"
+authtoken: 2jRcXXls1Dq0bhwdUumRKr2XWrR_7DvJMqxHrP6d9ena4EfVo
+tunnels:
+  server_http:
+    proto: http
+    addr: 80
+    domain: srti-server.online
+  server_ssh:
+    proto: tcp
+    addr: 22
+  server_apache:
+    proto: http
+    addr: 8000

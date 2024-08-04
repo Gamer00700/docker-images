@@ -81,22 +81,6 @@ services:
     volumes:
       - ./pgsql_data:/bitnami/postgresql
       - ./pgsql_data:/opt/bitnami/postgresql/conf
-    
-  #Ngrok
-  # ngrok:
-  #   image: ngrok/ngrok:latest
-  #   container_name: ngrok
-  #   restart: unless-stopped
-  #   command:
-  #     - "start"
-  #     - "--all"
-  #     - "/etc/ngrok.yml"
-  #   volumes:
-  #     - ./ngrok.yml:/etc/ngrok.yml
-  #   ports:
-  #     - 4040:4040
-  #   networks:
-  #     - proxy
 
 volumes:
   pgsql_data:
