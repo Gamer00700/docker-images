@@ -106,5 +106,5 @@ volumes:
 
 networks:
   proxy:
-    external:
-      name: proxy
+    external: true
+    name: proxy
