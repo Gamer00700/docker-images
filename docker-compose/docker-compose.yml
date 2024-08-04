@@ -2,50 +2,50 @@
 version: '2.29'
 
 services:
-  nginx-proxy:
-    image: jwilder/nginx-proxy
-    container_name: proxy
-    ports:
-      - 80:80
-      - 443:443
-    volumes:
-      - ./proxy/conf.d:/etc/nginx/conf.d
-      - ./proxy/vhost.d:/etc/nginx/vhost.d
-      - ./proxy/html:/usr/share/nginx/html
-      - ./proxy/certs:/etc/nginx/certs:ro
-      - /var/run/docker.sock:/tmp/docker.sock:ro
-    networks:
-      - proxy-tier
-    restart: always
+  # nginx-proxy:
+  #   image: jwilder/nginx-proxy
+  #   container_name: proxy
+  #   ports:
+  #     - 80:80
+  #     - 443:443
+  #   volumes:
+  #     - ./proxy/conf.d:/etc/nginx/conf.d
+  #     - ./proxy/vhost.d:/etc/nginx/vhost.d
+  #     - ./proxy/html:/usr/share/nginx/html
+  #     - ./proxy/certs:/etc/nginx/certs:ro
+  #     - /var/run/docker.sock:/tmp/docker.sock:ro
+  #   networks:
+  #     - proxy-tier
+  #   restart: always
 
-  letsencrypt-companion:
-    image: jrcs/letsencrypt-nginx-proxy-companion
-    container_name: letsencrypt-companion
-    volumes_from:
-      - nginx-proxy
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./proxy/certs:/etc/nginx/certs:rw
-    restart: always
+  # letsencrypt-companion:
+  #   image: jrcs/letsencrypt-nginx-proxy-companion
+  #   container_name: letsencrypt-companion
+  #   volumes_from:
+  #     - nginx-proxy
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock:ro
+  #     - ./proxy/certs:/etc/nginx/certs:rw
+  #   restart: always
 
-  nginx:
-    image: nginx
-    container_name: nextcloud_webserver
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
-    links:
-      - nextcloud
-    volumes_from:
-      - nextcloud
-    environment:
-      - VIRTUAL_HOST=srti-server.online
-      - VIRTUAL_NETWORK=nginx-proxy
-      - VIRTUAL_PORT=80
-      - LETSENCRYPT_HOST=srti-server.online
-      - LETSENCRYPT_EMAIL=srti.ph@proton.me
-    networks:
-      - proxy-tier
-    restart: always
+  # nginx:
+  #   image: nginx
+  #   container_name: nextcloud_webserver
+  #   volumes:
+  #     - ./nginx.conf:/etc/nginx/nginx.conf:ro
+  #   links:
+  #     - nextcloud
+  #   volumes_from:
+  #     - nextcloud
+  #   environment:
+  #     - VIRTUAL_HOST=srti-server.online
+  #     - VIRTUAL_NETWORK=nginx-proxy
+  #     - VIRTUAL_PORT=80
+  #     - LETSENCRYPT_HOST=srti-server.online
+  #     - LETSENCRYPT_EMAIL=srti.ph@proton.me
+  #   networks:
+  #     - proxy-tier
+  #   restart: always
 
   #NextCloud
   nextcloud:
@@ -64,7 +64,7 @@ services:
     volumes:
       - ./nc_data:/var/www/html
     networks:
-      - proxy-tier
+      - proxy
 
   # PostGreSql
   postgres:
@@ -78,7 +78,7 @@ services:
       - POSTGRES_PASSWORD=project
       - POSTGRES_DB=pgsql
     networks:
-      - proxy-tier
+      - proxy
     volumes:
       - ./pgsql_data:/bitnami/postgresql
       - ./pgsql_data:/opt/bitnami/postgresql/conf
@@ -97,12 +97,11 @@ services:
   #   ports:
   #     - 4040:4040
   #   networks:
-  #     - proxy-tier
+  #     - proxy
 
 volumes:
   pgsql_data:
   nc_data:
-  proxy:
 
 networks:
   proxy:
