@@ -1,5 +1,7 @@
 #PostGre
 docker-compose/pgsql_data/data
+docker-compose/pgsql_data/pg_hba.conf
+docker-compose/pgsql_data/postgresql.conf
 
 #NextCloud
 docker-compose/nc_data
