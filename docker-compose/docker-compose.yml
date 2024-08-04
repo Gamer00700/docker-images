@@ -58,6 +58,7 @@ services:
       - POSTGRES_USER=dev
       - PHP_MEMORY_LIMIT=10G
       - PHP_UPLOAD_LIMIT=10G
+      - NEXTCLOUD_DATA_DIR=/var/www/html/nextcloud/data
     ports:
       - 80:80
     restart: always
