@@ -15,6 +15,6 @@ RUN apt-get update && apt-get install john --yes
 RUN apt-get update && apt-get install dnsenum --yes
 
 #GIT
-RUN git clone https://github.com/projectdiscovery/subfinder.git 
-RUN git clone https://github.com/aboul3la/Sublist3r.git
-RUN git clone https://github.com/projectdiscovery/httpx.git
+CMD git clone https://github.com/projectdiscovery/subfinder.git 
+CMD git clone https://github.com/aboul3la/Sublist3r.git
+CMD git clone https://github.com/projectdiscovery/httpx.git
